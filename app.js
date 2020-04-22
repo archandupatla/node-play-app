@@ -19,6 +19,6 @@ const rootPage= require('./routes/root-page');
 app.use('/admin',addName);
 app.use(rootPage);
 app.use((req,res)=>{
-res.send('<p>You are on the error page</p>')
+res.send('<h1>Page Not Found</h1>')
 })
 app.listen(5000);

@@ -3,6 +3,7 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/', (req,res)=>{
+    console.log(req.body)
     res.sendFile(path.join(__dirname,'../','client/demo-aws-react','build','index.html'))
 });
 

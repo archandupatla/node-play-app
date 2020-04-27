@@ -1,13 +1,24 @@
-const http = require('http');
 const express = require('express');
 const app = express();
-const addName = require('./routes/add-name');
-const rootPage= require('./routes/root-page');
-const path = require('path')
-app.use(express.static(path.join(__dirname,'client/demo-aws-react','build')));
-app.use('/admin',addName);
+const mongoConnect = require('./util/database').mongoConnect; //creating mongo connection
+const rootPage = require('./routes/root-page'); //referencing the root path
+const admin = require('./routes/admin');
+const product = require('./routes/product');
+const bodyParser = require("body-parser");
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'client/demo-aws-react', 'build')));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 app.use(rootPage);
-app.use((req,res)=>{
-res.send('<h1>Page Not Found</h1>')
+app.use(admin);
+app.use(product);
+
+app.use((req, res) => {
+    res.send('<h1>Page Not Found</h1>')
 })
-app.listen(5000);
+mongoConnect(()=> {
+    console.log('in the call back function');
+    app.listen(5000)
+});

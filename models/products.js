@@ -1,16 +1,16 @@
-const getDB = require('../util/database').exportDB;
+const mongoose = require('mongoose');
 
-class Products{
-    constructor(title){
-        this.title = title || 'test'
-        this.productID=1;
-    }
-    save(data){
-        console.log('in the save method of products')
-        const db = getDB();
-        db.collection('products')
-        .insertOne(new Products(data)).then(res=>console.log(res)).catch(err => console.log(err))
-    }
-}
+const Schema = mongoose.Schema;
 
-module.exports = Products;
+const Product = new Schema({
+    title:{
+        type:String,
+        required:true
+    },
+    price:{
+        type:Number,
+        required: true
+    }
+})
+
+module.exports = mongoose.model('Product',Product);

@@ -42,7 +42,7 @@ app.use((req, res) => {
 //connect mongo db.
 mongoose.connect(`mongodb+srv://abilash:india143@cluster0-qcy7w.mongodb.net/products?retryWrites=true&w=majority`).then(()=>{
     console.log('successfully connected');
-    app.listen(5000)
+    app.listen(process.env.PORT || 5000)
     
 }).catch(err=>console.log('error',err))
 

@@ -11,7 +11,7 @@ export class Auth0Provider extends React.Component{
     config = {
         domain: process.env.REACT_APP_DOMAIN,
         client_id:process.env.REACT_APP_CLIENT_ID,
-        redirect_uri:window.location.origin,
+        redirect_uri:process.env.REACT_APP_ENV==='local' ? window.location.origin:'https://demo-portal.net',
         
     }
     componentDidMount(){

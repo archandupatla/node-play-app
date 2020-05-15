@@ -12,7 +12,7 @@ const rootPage = require('./routes/root-page'); //referencing the root path
 const admin = require('./routes/admin');
 const product = require('./routes/product');
 const getProduct = require('./routes/getProducts');
-
+const token = require('./routes/token');
 //set static files like css
 app.use(express.static(path.join(__dirname, 'client/demo-aws-react', 'build')));
 
@@ -30,10 +30,17 @@ app.use(bodyParser.json());
 app.use(session({secret:'my secret', resave:false, saveUninitialized:true}))
 
 //create middleware's to register routes
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,DELETE,PUT');
+    res.setHeader('Access-Control-Allow-Headers','Authorization,Content-Type');
+    next();
+})
 app.use(rootPage);
 app.use(admin);
 app.use(product);
 app.use(getProduct);
+app.use(token)
 
 app.use((req, res) => {
     res.send('<h1>Page Not Found</h1>')

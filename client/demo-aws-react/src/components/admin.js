@@ -61,18 +61,18 @@ class Admin extends React.Component {
             "given_name": form['firstname'].value,
         }
         Axios.post(createUrl, body, {headers:{Authorization:`Bearer ${localStorage.getItem('access_token')}`}}).then(data => {
-            debugger
+            
             console.log('user has been successfully created');
             alert('User has been created');
             let user_id = data.data.user_id;
             let createRole = `https://dev-91amchcz.auth0.com/api/v2/users/${user_id}/roles`;
             let roleId = roleIds.filter(obj => obj.name === form['role'].value)
-            debugger
+            
             const role = {
                 "roles":[roleId[0].id]
             }
             Axios.post(createRole, role, {headers:{Authorization:`Bearer ${localStorage.getItem('access_token')}`}}).then(res=>{
-                debugger
+                
             }).catch(error => console.log(`Error in creating the role`))
         }).catch(error => console.log('error in creating the user'));
     }
@@ -102,15 +102,17 @@ class Admin extends React.Component {
                 break;
             default:
                 return;
-
         }
-        
         this.setState({form});
+    }
+    goBackHandler(){
+        this.props.history.push('/')
     }
     render() {
         return (
             <div>
-                <div>
+                <div className='create-user-form'>
+                    <h3 className='form-title'>User Admin</h3>
                     <div className='form-firstname'>
                         <label for='first-name' className='form-label'>
                             FirstName
@@ -130,15 +132,26 @@ class Admin extends React.Component {
                         <input type='text' className='form-input' name='email' onChange={e=> this.onChangeHandler(e)} value={this.state.form.email.value}/>
                     </div>
                     <div>
+                        <label for='role'>
+                            Role
+                        </label>
                         <select className='form-select' name='role' onChange={e=> this.onChangeHandler(e)} value={this.state.form.role.value}>
                             {this.state.roles.map(role => <option value={role.value}>{role.name}</option>)}
                         </select>
                     </div>
+                    <div>
                     <div className='form-submit'>
                         <button onClick={()=>this.onSubmitHandler()}>
                             Submit
                         </button>
                     </div>
+                    <div className='form-submit'>
+                        <button onClick={()=>this.goBackHandler()}>
+                            Home
+                        </button>
+                    </div>
+                    </div>
+                   
                 </div>
             </div>
         )

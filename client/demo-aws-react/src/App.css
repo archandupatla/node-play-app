@@ -12,7 +12,114 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.home{
+  margin: auto;
+  width: 50%;
+  border:1px solid grey;
+  padding: 10px;
+  box-shadow: 0 1px 4px 1px #707070;
+  border-radius: 10px;
+}
+.home button{
+  float: right;
+  font-weight: bold;
+  color: #fff;
+  background-color: #006fa4;
+  border-radius: 15px;
+  width: 75px;
+  height: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  outline: none;
+}
+.home h1{
+  display: inline-block;
+  margin-top: 0px;
+  color: #707070;
+}
+.home-tabs{
+  display: flex;
+}
+.home-tabs div{
+  margin: 20px;
+}
+.home-tabs a{
+  text-decoration: none;
+  font-weight: bold;
+  color: darkgray;
+}
 
+.home-tabs a:hover{
+  text-decoration: none;
+  font-weight: bold;
+  color: #006fa4;
+}
+.policy-holder>table{
+  display: table;
+  width: 100%;
+  border: 1px solid darkgray;
+  border-collapse: collapse;
+
+}
+.policy-holder th{
+  color: darkgray;
+  border-bottom: 1px solid grey;
+  padding: 10px;
+
+}
+.policy-holder td{
+  color: grey;
+  border-bottom: 1px solid grey;
+  padding: 10px;
+}
+.policy-holder tr{
+  text-align: center;
+}
+.policy-holder tr:nth-child(even){
+  background-color: #dddddd;
+
+}
+.create-user-form{
+  display: block;
+  width: 50%;
+  margin: auto;
+  border: 1px solid lightgray;
+  box-sizing: border-box;
+  padding: 20px;
+  box-shadow: 0 1px 4px 1px #707070;
+  border-radius: 10px;
+}
+.create-user-form div{
+  display: flex;
+  margin-bottom: 10px;
+
+}
+.create-user-form label{
+  font-weight: bold;
+  color: darkgray;
+  margin-right: 20px;
+  width: 100px;
+}
+.create-user-form input{
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+}
+.form-submit button{
+  font-weight: bold;
+  width: 150px;
+  background: #006fa4;
+  outline: none;
+  color: #FFF;
+  margin: 10px;
+  border-radius: 20px;
+  padding: 7px;
+  cursor: pointer;
+}
+.create-user-form h3{
+  color: #707070;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
